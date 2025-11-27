@@ -26,7 +26,7 @@ export default class FruitDrop extends Game {
   public constructor(canvas: HTMLCanvasElement) {
     super();
     this.score = 0;
-    this.timeLeft = 60;
+    this.timeLeft = 60000;
     this.canvas = canvas;
     this.canvas.height = window.innerHeight;
     this.canvas.width = window.innerWidth;
@@ -84,8 +84,16 @@ export default class FruitDrop extends Game {
         this.spiders.splice(0, 1);
       }
     }
+    this.timeLeft -= delta;
     return true;
   }
+
+  /**
+   * Cool.
+   */
+  // private millisecondCounter(): number {
+
+  // }
 
   /**
    * Render all the elements in the screen.
@@ -94,7 +102,7 @@ export default class FruitDrop extends Game {
     // Clear the canvas
     CanvasRenderer.clearCanvas(this.canvas);
     CanvasRenderer.writeText(this.canvas, `${this.score}`, 100, 200, 'center', 'sans-serif', 50, 'red');
-    CanvasRenderer.writeText(this.canvas, `${this.timeLeft}`, 200, 200, 'center', 'sans-serif', 50, 'blue');
+    CanvasRenderer.writeText(this.canvas, `${Math.ceil(this.timeLeft / 1000)}`, 200, 200, 'center', 'sans-serif', 50, 'blue');
     for (const fruit of this.fruit) {
       fruit.render(this.canvas);
     }
