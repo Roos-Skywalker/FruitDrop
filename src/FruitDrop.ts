@@ -13,6 +13,8 @@ export default class FruitDrop extends Game {
 
   private spiders: Spider[];
 
+  // private scoreItems: ScoreItem[];
+
   private player: Player;
 
   private score: number;
