@@ -73,7 +73,7 @@ export default class CanvasRenderer {
   }
 
   /**
-   *
+   * Shut up.
    * @param canvas Canvas to write to
    * @param text Text to write
    * @param xCoordinate x-coordinate of the text

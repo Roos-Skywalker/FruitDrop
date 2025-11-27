@@ -17,7 +17,7 @@ export default class FruitDrop extends Game {
 
   private score: number;
 
-  // private timeLeft: number;
+  private timeLeft: number;
 
   private timeToNextItem: number;
 
@@ -26,6 +26,7 @@ export default class FruitDrop extends Game {
   public constructor(canvas: HTMLCanvasElement) {
     super();
     this.score = 0;
+    this.timeLeft = 60;
     this.canvas = canvas;
     this.canvas.height = window.innerHeight;
     this.canvas.width = window.innerWidth;
@@ -70,7 +71,7 @@ export default class FruitDrop extends Game {
       this.fruit[i].update(delta);
       if (this.player.isCollidingFruit(this.fruit[i])) {
         this.score += this.fruit[i].getScore();
-        this.fruit.pop();
+        this.fruit.splice(0, 1);
         // console.log(this.fruit[i].getScore());
       };
     }
@@ -80,7 +81,7 @@ export default class FruitDrop extends Game {
       if (this.player.isCollidingSpider(spider)) {
         // console.log(spider.getScore());
         this.score += spider.getScore();
-        this.spiders.pop();
+        this.spiders.splice(0, 1);
       }
     }
     return true;
@@ -92,7 +93,8 @@ export default class FruitDrop extends Game {
   public render(): void {
     // Clear the canvas
     CanvasRenderer.clearCanvas(this.canvas);
-    CanvasRenderer.writeText(this.canvas, `${this.score}`, 200, 200);
+    CanvasRenderer.writeText(this.canvas, `${this.score}`, 100, 200, 'center', 'sans-serif', 50, 'red');
+    CanvasRenderer.writeText(this.canvas, `${this.timeLeft}`, 200, 200, 'center', 'sans-serif', 50, 'blue');
     for (const fruit of this.fruit) {
       fruit.render(this.canvas);
     }
