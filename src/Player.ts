@@ -25,7 +25,7 @@ export default class Player {
     this.posX = maxX / 2;
     this.posY = maxY - 100;
     this.maxX = maxX;
-    this.speed = 0.1;
+    this.speed = 1;
     this.movingLeft = false;
     this.movingRight = false;
   }
