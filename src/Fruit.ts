@@ -32,7 +32,7 @@ export default class Fruit extends ScoreItem {
   /**
    * update
   delta : void*/
-  public update(delta: number): void {
+  public override update(delta: number): void {
     this.posY += delta * this.speed + (0.001 * delta);
   }
 }

@@ -26,6 +26,11 @@ export default abstract class ScoreItem {
   }
 
   /**
+   * update
+   */
+  public abstract update(delta: number): void;
+
+  /**
    * getScore
    */
   public getScore(): number {

@@ -27,7 +27,7 @@ export default class Spider extends ScoreItem {
   /**
    * update
    */
-  public update(delta: number): void {
+  public override update(delta: number): void {
     this.posY += delta * 0.1 + (0.001 * delta);
   }
 }
