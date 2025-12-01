@@ -61,6 +61,10 @@ export default class FruitDrop extends Game {
    */
   public update(delta: number): boolean {
     this.timeToNextItem -= delta;
+    this.timeLeft -= delta;
+    if (this.timeLeft < 0 || this.score < 0) {
+      return false;
+    }
     if (this.timeToNextItem < 0) {
       this.fruit.push(new Fruit(this.canvas.width));
       this.spiders.push(new Spider(this.canvas.width));
@@ -86,7 +90,6 @@ export default class FruitDrop extends Game {
         // console.log(spider.getScore());
       }
     }
-    this.timeLeft -= delta;
     return true;
   }
 
@@ -113,5 +116,9 @@ export default class FruitDrop extends Game {
       spiders.render(this.canvas);
     }
     this.player.render(this.canvas);
+
+    if (this.timeLeft < 0 || this.score < 0) {
+      CanvasRenderer.writeText(this.canvas, `${this.score}`, 500, 500, 'center', 'sans-serif', 50, 'white');
+    }
   }
 }
