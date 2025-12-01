@@ -118,7 +118,7 @@ export default class FruitDrop extends Game {
     this.player.render(this.canvas);
 
     if (this.timeLeft < 0 || this.score < 0) {
-      CanvasRenderer.writeText(this.canvas, `${this.score}`, 500, 500, 'center', 'sans-serif', 50, 'white');
+      CanvasRenderer.writeText(this.canvas, 'GAME OVER', 500, 500, 'center', 'sans-serif', 50, 'white');
     }
   }
 }
