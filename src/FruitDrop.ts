@@ -71,7 +71,7 @@ export default class FruitDrop extends Game {
       this.fruit[i].update(delta);
       if (this.player.isCollidingFruit(this.fruit[i])) {
         this.score += this.fruit[i].getScore();
-        this.fruit.splice(0, 1);
+        this.fruit.splice(i, 1);
         // console.log(this.fruit[i].getScore());
       };
     }
@@ -79,9 +79,9 @@ export default class FruitDrop extends Game {
     for (const spider of this.spiders) {
       spider.update(delta);
       if (this.player.isCollidingSpider(spider)) {
-        // console.log(spider.getScore());
         this.score += spider.getScore();
-        this.spiders.splice(0, 1);
+        this.spiders.splice(this.spiders.indexOf(spider), 1);
+        // console.log(spider.getScore());
       }
     }
     this.timeLeft -= delta;
